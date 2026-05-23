@@ -1,0 +1,15 @@
+-- Loader.lua (النسخة النهائية)
+_G.UI_Elements = {} 
+
+local UI_URL = "https://raw.githubusercontent.com/tahymalw-dot/Lua-scripts/refs/heads/main/Ui"
+local Logic_URL = "https://raw.githubusercontent.com/tahymalw-dot/Lua-scripts/refs/heads/main/Logic"
+
+local function loadScript(url)
+    local s, r = pcall(function() return loadstring(game:HttpGet(url))() end)
+    if not s then warn("حدث خطأ في تحميل السكربت: " .. tostring(r)) end
+end
+
+-- تحميل الأجزاء بالترتيب
+loadScript(UI_URL)
+task.wait(0.5) 
+loadScript(Logic_URL)
